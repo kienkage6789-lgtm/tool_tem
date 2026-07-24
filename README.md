@@ -1,7 +1,7 @@
 # Tool Tạo Tem Vật Liệu
 
 > [!WARNING]
-> **Tuyên bố miễn trừ trách nhiệm (Disclaimer):** Đây là dự án mã nguồn mở. Tác giả không chịu trách nhiệm đối với bất kỳ lỗi nào hoặc hậu quả phát sinh từ việc sử dụng mã nguồn và các tệp tin bên trong dự án này.
+> **Tuyên bố miễn trừ trách nhiệm (Disclaimer):** Đây là dự án mã nguồn mở miễn phí 100%. Tác giả không chịu trách nhiệm đối với bất kỳ lỗi nào hoặc hậu quả phát sinh từ việc sử dụng mã nguồn và các tệp tin bên trong dự án này.
 
 ## Mục tiêu Dự án
 Phát triển công cụ mã nguồn mở 100% nhằm tự động hóa việc tạo và in Tem Vật liệu dựa trên dữ liệu, hỗ trợ đồng nghiệp tự động hóa quy trình sản xuất. Hệ thống được thiết kế chạy Offline hoàn toàn trên trình duyệt.
