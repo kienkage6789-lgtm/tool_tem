@@ -1,7 +1,7 @@
 # Tool Tạo Tem Vật Liệu
 
 > [!WARNING]
-> **Tuyên bố miễn trừ trách nhiệm (Disclaimer):** Đây là dự án mã nguồn mở miễn phí 100%. Tác giả không chịu trách nhiệm đối với bất kỳ lỗi nào hoặc hậu quả phát sinh từ việc sử dụng mã nguồn và các tệp tin bên trong dự án này.
+> **Tuyên bố miễn trừ trách nhiệm (Disclaimer):** Đây là dự án mã nguồn mở miễn phí 100% được cấp phép dưới điều khoản Giấy phép MIT. Phần mềm được cung cấp "như hiện trạng" (AS IS), tác giả và các bên đóng góp không chịu trách nhiệm pháp lý đối với bất kỳ khiếu nại, thiệt hại hoặc nghĩa vụ nào phát sinh từ việc sử dụng hoặc các hoạt động khác liên quan đến phần mềm này.
 
 ## Mục tiêu Dự án
 Phát triển công cụ mã nguồn mở 100% nhằm tự động hóa việc tạo và in Tem Vật liệu dựa trên dữ liệu, hỗ trợ đồng nghiệp tự động hóa quy trình sản xuất. Hệ thống được thiết kế chạy Offline hoàn toàn trên trình duyệt.
@@ -30,3 +30,8 @@ Phát triển công cụ mã nguồn mở 100% nhằm tự động hóa việc t
 - `web_offline/style_v2.css`: File định dạng và dàn trang in.
 - `web_offline/script_v2.js`: File xử lý logic nhập liệu, render QR và In.
 - `web_offline/lib/`: Chứa các thư viện offline (`qrcode.min.js`).
+
+## Giấy phép (License)
+
+Dự án này được cấp phép theo các điều khoản của [Giấy phép MIT](file:///D:/x%C6%B0%E1%BB%9Fng%20nh%E1%BB%B1a/Tool%20t%E1%BA%A1o%20tem/LICENSE) - xem file [LICENSE](file:///D:/x%C6%B0%E1%BB%9Fng%20nh%E1%BB%B1a/Tool%20t%E1%BA%A1o%20tem/LICENSE) để biết thêm chi tiết.
+
