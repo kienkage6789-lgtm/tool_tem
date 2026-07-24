@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_v2.css">
+    <!-- Offline libraries -->
+    <script src="lib/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Form Nhập Liệu -->
+        <div class="sidebar">
+            <h2>Nhập liệu Tem</h2>
+
+            <!-- Bỏ tính năng Excel và Mapping -->
+
+            <div class="template-section" id="templateSection" style="padding-top: 10px; border-top: 1px dashed #ccc; margin-bottom: 15px;">
+                <h3 style="font-size: 1rem; color: #27ae60; margin-bottom: 10px;">Quản lý Mẫu Tem (Offline)</h3>
+                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                    <select id="templateSelect" style="flex: 2; padding: 5px;">
+                        <option value="">-- Chọn mẫu đã lưu --</option>
+                    </select>
+                    <button type="button" id="btnUpdateTemplate" class="btn btn-success" style="flex: 1; padding: 5px; font-size: 0.85rem; margin-top: 0;" disabled>Cập Nhật</button>
+                    <button type="button" id="btnDeleteTemplate" class="btn btn-danger" style="flex: 1; padding: 5px; font-size: 0.85rem; margin-top: 0;" disabled>Xóa Mẫu</button>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="newTemplateName" placeholder="Nhập tên mẫu mới cần lưu..." style="flex: 2; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+                    <button type="button" id="btnSaveTemplate" class="btn btn-primary" style="flex: 1; padding: 5px; font-size: 0.85rem; margin-top: 0;">Lưu Mới</button>
+                </div>
+                <div style="display: flex; gap: 5px; margin-top: 10px; border-top: 1px dotted #ccc; padding-top: 10px;">
+                    <button type="button" id="btnExportBackup" class="btn" style="flex: 1; padding: 5px; font-size: 0.85rem; margin-top: 0; background-color: #f39c12; color: white; border: none; border-radius: 4px; cursor: pointer;">⬇️ Tải file Backup</button>
+                    <button type="button" id="btnImportBackup" class="btn" style="flex: 1; padding: 5px; font-size: 0.85rem; margin-top: 0; background-color: #8e44ad; color: white; border: none; border-radius: 4px; cursor: pointer;">⬆️ Phục hồi Backup</button>
+                    <input type="file" id="importBackupFile" accept=".json" style="display: none;">
+                </div>
+            </div>
+
+            <form id="labelForm">
+                <div class="form-group">
+                    <label>Phân loại (Checkbox):</label>
+                    <select id="category" name="category">
+                        <option value="">-- Để trống --</option>
+                        <option value="muahang">Mua hàng</option>
+                        <option value="khcap">KH cấp</option>
+                        <option value="qlsx">QLSX</option>
+                        <option value="kho">Kho</option>
+                        <option value="hangmau">Hàng mẫu</option>
+                        <option value="uythac">Ủy thác ngoài</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung Mã QR (Tự động tạo):</label>
+                    <input type="text" id="qrContent" name="qrContent" placeholder="Được tạo tự động..." readonly style="background-color: #f0f0f0;">
+                </div>
+                <div class="form-group">
+                    <label>Ca làm việc:</label>
+                    <select id="shift" name="shift">
+                        <option value="A">Ca A</option>
+                        <option value="B">Ca B</option>
+                        <option value="C">Ca C</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Mã vật liệu phụ:</label>
+                    <input type="text" id="subMaterialCode" name="subMaterialCode" placeholder="VD: IN2603051-00-">
+                </div>
+                <div class="form-group">
+                    <label>Loại Tem:</label>
+                    <div class="radio-group" style="flex-direction: row; margin-top: 0; margin-bottom: 10px;">
+                        <label class="radio-card" style="padding: 5px 10px; flex: 1;"><input type="radio" name="labelType" value="box" checked> <span class="radio-text" style="font-size: 0.8rem;">Tem Thùng (Tăng số)</span></label>
+                        <label class="radio-card" style="padding: 5px 10px; flex: 1;"><input type="radio" name="labelType" value="bag"> <span class="radio-text" style="font-size: 0.8rem;">Tem Túi (Cố định)</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số thứ tự (Thùng/Túi) bắt đầu:</label>
+                    <input type="number" id="startBoxNumber" name="startBoxNumber" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Tên SP:</label>
+                    <input type="text" id="productName" name="productName" placeholder="Nhập Tên SP">
+                </div>
+                <div class="form-group">
+                    <label>Mã đơn nhập kho / đơn hàng:</label>
+                    <input type="text" id="orderNo" name="orderNo" placeholder="Nhập Mã đơn">
+                </div>
+                <div class="form-group">
+                    <label>Mã liệu:</label>
+                    <input type="text" id="materialCode" name="materialCode" placeholder="Nhập Mã liệu">
+                </div>
+                <div class="form-group">
+                    <label>Ngày sản xuất:</label>
+                    <input type="text" id="mfgDate" name="mfgDate" placeholder="YYYY.MM.DD">
+                </div>
+                <div class="form-group">
+                    <label>Nhà cung cấp (NCC):</label>
+                    <input type="text" id="supplier" name="supplier" placeholder="Nhập NCC">
+                </div>
+                <div class="form-group">
+                    <label>Ngày xuất hàng:</label>
+                    <input type="text" id="shippingDate" name="shippingDate" placeholder="YYYY.MM.DD">
+                </div>
+                <div class="form-group">
+                    <label>LOT.NO:</label>
+                    <input type="text" id="lotNo" name="lotNo" placeholder="Nhập LOT.NO">
+                </div>
+                <div class="form-group">
+                    <label>Số lượng (Pcs):</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Nhập số lượng">
+                </div>
+                <div class="form-group">
+                    <label>Quản lý theo tháng:</label>
+                    <input type="text" id="monthlyManagement" name="monthlyManagement" placeholder="VD: Tháng 10">
+                </div>
+                <div class="form-group">
+                    <label>Ngày nhập kho / Ký tên (Trái - Phải):</label>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="text" id="receiptDate" name="receiptDate" placeholder="Tên bên trái" style="flex: 1;">
+                        <input type="text" id="receiptDateRight" name="receiptDateRight" placeholder="Tên bên phải" style="flex: 1;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng tem cần tạo (PDF):</label>
+                    <input type="number" id="labelCount" name="labelCount" value="6" min="1">
+                </div>
+            </form>
+            
+            <div class="form-group" style="margin-top: 20px;">
+                <label>Kích thước Tem (Scale):</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <input type="range" id="labelScale" min="50" max="150" value="100" style="flex: 1; cursor: pointer;">
+                    <span id="scaleValue" style="font-weight: bold; width: 45px; text-align: right;">100%</span>
+                </div>
+            </div>
+
+            <button type="button" id="btnExportPDF" class="btn btn-success" style="margin-top: 15px;">Xuất PDF (A4)</button>
+        </div>
+
+        <!-- Vùng Xem Trước (Preview) -->
+        <div class="main-content">
+            <h2>Xem trước (Preview)</h2>
+            <div class="preview-container">
+                <div id="labelPreview" class="label-template">
+                    <!-- Nội dung tem sẽ được render ở đây qua JS -->
+                </div>
+            </div>
+            
+            <!-- Footer Thông tin -->
+            <div style="margin-top: auto; padding: 15px; text-align: center; color: #7f8c8d; font-size: 0.85rem; border-top: 1px solid #ddd; width: 100%;">
+                <i>Tool do phòng R&D công ty DEZEN phát triển</i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container ẩn chứa layout A4 dùng để xuất PDF -->
+    <div id="pdfPrintArea" style="display: none;">
+        <div id="a4PagesContainer"></div>
+    </div>
+
+    <script src="script_v2.js"></script>
+</body>
+</html>

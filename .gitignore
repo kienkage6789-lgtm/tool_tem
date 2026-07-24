@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+
+# Build output directories
+dist/
+build/
+bin/
+obj/
+
+# Agent/Tool-specific files
+.agent/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log

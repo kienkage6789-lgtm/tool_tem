@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Tạo Tem Vật Liệu</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Offline libraries -->
+    <script src="lib/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Form Nhập Liệu -->
+        <div class="sidebar">
+            <h2>Nhập liệu Tem</h2>
+            <form id="labelForm">
+                <div class="form-group">
+                    <label>Phân loại (Checkbox):</label>
+                    <select id="category" name="category">
+                        <option value="muahang">Mua hàng</option>
+                        <option value="khcap">KH cấp</option>
+                        <option value="qlsx">QLSX</option>
+                        <option value="kho">Kho</option>
+                        <option value="hangmau">Hàng mẫu</option>
+                        <option value="uythac">Ủy thác ngoài</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tên SP:</label>
+                    <input type="text" id="productName" name="productName" placeholder="Nhập Tên SP">
+                </div>
+                <div class="form-group">
+                    <label>Mã đơn nhập kho / đơn hàng:</label>
+                    <input type="text" id="orderNo" name="orderNo" placeholder="Nhập Mã đơn">
+                </div>
+                <div class="form-group">
+                    <label>Mã liệu:</label>
+                    <input type="text" id="materialCode" name="materialCode" placeholder="Nhập Mã liệu">
+                </div>
+                <div class="form-group">
+                    <label>Ngày sản xuất:</label>
+                    <input type="text" id="mfgDate" name="mfgDate" placeholder="YYYY.MM.DD">
+                </div>
+                <div class="form-group">
+                    <label>Nhà cung cấp (NCC):</label>
+                    <input type="text" id="supplier" name="supplier" placeholder="Nhập NCC">
+                </div>
+                <div class="form-group">
+                    <label>Ngày xuất hàng:</label>
+                    <input type="text" id="shippingDate" name="shippingDate" placeholder="YYYY.MM.DD">
+                </div>
+                <div class="form-group">
+                    <label>LOT.NO:</label>
+                    <input type="text" id="lotNo" name="lotNo" placeholder="Nhập LOT.NO">
+                </div>
+                <div class="form-group">
+                    <label>Số lượng (Pcs):</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Nhập số lượng">
+                </div>
+                <div class="form-group">
+                    <label>Quản lý theo tháng:</label>
+                    <input type="text" id="monthlyManagement" name="monthlyManagement" placeholder="VD: Tháng 10">
+                </div>
+                <div class="form-group">
+                    <label>Ngày nhập kho (Dấu KT):</label>
+                    <input type="text" id="receiptDate" name="receiptDate" placeholder="YYYY.MM.DD">
+                </div>
+                <div class="form-group">
+                    <label>Số lượng tem cần tạo (PDF):</label>
+                    <input type="number" id="labelCount" name="labelCount" value="6" min="1">
+                </div>
+                
+                <button type="button" id="btnExportPDF" class="btn btn-success">Xuất PDF (A4)</button>
+            </form>
+        </div>
+
+        <!-- Vùng Xem Trước (Preview) -->
+        <div class="main-content">
+            <h2>Xem trước (Preview)</h2>
+            <div class="preview-container">
+                <div id="labelPreview" class="label-template">
+                    <!-- Nội dung tem sẽ được render ở đây qua JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container ẩn chứa layout A4 dùng để xuất PDF -->
+    <div id="pdfPrintArea" style="display: none;">
+        <div id="a4PagesContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

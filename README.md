@@ -1,12 +1,15 @@
-# Tool Tạo Tem Vật Liệu (SyncMold)
+# Tool Tạo Tem Vật Liệu
+
+> [!WARNING]
+> **Tuyên bố miễn trừ trách nhiệm (Disclaimer):** Đây là dự án mã nguồn mở. Tác giả không chịu trách nhiệm đối với bất kỳ lỗi nào hoặc hậu quả phát sinh từ việc sử dụng mã nguồn và các tệp tin bên trong dự án này.
 
 ## Mục tiêu Dự án
-Phát triển công cụ tự động hóa việc tạo và in Tem Vật liệu dựa trên dữ liệu. Hệ thống được thiết kế chạy Offline hoàn toàn trên trình duyệt.
+Phát triển công cụ mã nguồn mở 100% nhằm tự động hóa việc tạo và in Tem Vật liệu dựa trên dữ liệu, hỗ trợ đồng nghiệp tự động hóa quy trình sản xuất. Hệ thống được thiết kế chạy Offline hoàn toàn trên trình duyệt.
 
 ## Tình trạng dự án
 
 ### ✅ Giai đoạn 1: Giao diện Nhập liệu Thủ công (Đã hoàn thành)
-- **Kiến trúc Offline**: Chạy 100% local qua file HTML/CSS/JS thuần, không bị lỗi CORS/Bảo mật. (Sử dụng file \pp.html\).
+- **Kiến trúc Offline**: Chạy 100% local qua file HTML/CSS/JS thuần, không bị lỗi CORS/Bảo mật. (Sử dụng file \ pp.html\).
 - **Giao diện chuẩn hóa**: Layout CSS thiết kế khớp 100% tỷ lệ, font chữ, viền bảng và các vị trí logo so với ảnh mẫu.
 - **Data Binding & Live Preview**: Gõ form tới đâu tem cập nhật tới đó. Hỗ trợ trường Checkbox (để trống mặc định) và tùy chỉnh Nội dung Mã QR.
 - **Dàn trang in A4 chuẩn**: Xử lý dàn trang tự động 6 tem / 1 trang A4. Sử dụng lệnh in gốc của trình duyệt để xuất PDF vector sắc nét mà không cần thư viện bên thứ 3.

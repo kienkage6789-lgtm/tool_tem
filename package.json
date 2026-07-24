@@ -1,0 +1,42 @@
+{
+  "name": "DEZEN-label-tool",
+  "version": "1.0.2",
+  "description": "Tool tạo tem vật liệu cho công ty DEZEN",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "com.dezen.labeltool",
+    "productName": "DEZEN Label Tool",
+    "directories": {
+      "app": ".",
+      "output": "dist"
+    },
+    "win": {
+      "icon": "web_offline/icon_256.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DEZEN Label Tool"
+    },
+    "files": [
+      "main.js",
+      "web_offline/**/*"
+    ]
+  },
+  "author": "R&D DEZEN",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3"
+  }
+}
